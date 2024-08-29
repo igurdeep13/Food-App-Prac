@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import styles from "./search.module.css"
 
 const URL = "https://api.spoonacular.com/recipes/complexSearch";
 
-export default function Search() {
+export default function Search({ foodData, setFoodData}) {
   // Capturing the State Controlled Variable.
   const [query, setQuery] = useState("pizza");
 
@@ -12,14 +13,15 @@ export default function Search() {
       const apiKey = import.meta.env.VITE_SPOONACULAR_API_KEY;
       const res = await fetch(`${URL}?query=${query}&apiKey=${apiKey}`);
       const data = await res.json();
-      console.log(data);
+      console.log(data.results);
+      setFoodData(data.results)
     }
     fetchFood();
   }, [query]);
 
   return (
-    <div>
-      <input
+    <div className={styles.searchBar}>
+      <input className={styles.inputBar}
         onChange={(e) => {
           setQuery(e.target.value);
         }}
