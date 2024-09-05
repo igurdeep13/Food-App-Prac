@@ -14,6 +14,7 @@ function App() {
     <div className="App">
       <NavBar />
       <Search foodData={foodData} setFoodData={setFoodData} />
+
       <Container>
         <InnerContainer>
           <FoodList setFoodId={setFoodId} foodData={foodData} />
@@ -23,6 +24,7 @@ function App() {
         </InnerContainer>
       </Container>
     </div>
+
   );
 }
 
